@@ -9,7 +9,7 @@ find the sum of the even-valued terms.
 -}
 main = do
   putStrLn " :: Euler problem 02: Fibbos Sum ::"
-  putStrLn (" :: Sum of even fibs up to 1M: " ++ (show (sum (filter even (fibsUpTo 1 4000000)))))
+  putStrLn (" :: Sum of even fibs up to 1M: " ++ show (sum (filter even (fibsUpTo 1 4000000))))
 
   
 
