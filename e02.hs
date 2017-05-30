@@ -16,7 +16,7 @@ main = do
 fibsUpTo :: Integer -> Integer -> [Integer]
 fibsUpTo current end
   | value > end = []
-  | otherwise   = value : (fibsUpTo (current+1) end)
+  | otherwise   = value : fibsUpTo (current+1) end
   where value = fib current
   
   
@@ -31,6 +31,6 @@ fibs = fmap fib [1..]
 fib :: Integer -> Integer
 fib 0 = 1
 fib 1 = 1
-fib x = (fib (x-1)) + (fib (x-2))
+fib x = fib (x-1) + fib (x-2)
 
 
