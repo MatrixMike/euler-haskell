@@ -23,5 +23,5 @@ multiplesOfLessThan = multiplesOfLessThan' 1
 multiplesOfLessThan' :: Integer -> [Integer] -> Integer -> [Integer]
 multiplesOfLessThan' thisNum divisors upTo
   | upTo == thisNum = []
-  | any (==0) (fmap (thisNum `mod`) [3,5]) = [thisNum]++(multiplesOfLessThan' (thisNum+1) divisors upTo)
-  | otherwise = (multiplesOfLessThan' (thisNum+1) divisors upTo)
+  | elem 0 (fmap (thisNum `mod`) [3,5]) = [thisNum]++multiplesOfLessThan' (thisNum+1) divisors upTo
+  | otherwise = multiplesOfLessThan' (thisNum+1) divisors upTo
