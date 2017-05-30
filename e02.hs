@@ -11,14 +11,11 @@ main = do
   putStrLn " :: Euler problem 02: Fibbos Sum ::"
   putStrLn (" :: Sum of even fibs up to 1M: " ++ show (sum (filter even (fibsUpTo 1 4000000))))
 
-  
-
 fibsUpTo :: Integer -> Integer -> [Integer]
 fibsUpTo current end
   | value > end = []
   | otherwise   = value : fibsUpTo (current+1) end
   where value = fib current
-  
   
   {-
   fibsLessThan :: Integer -> [Integer]
