@@ -19,29 +19,29 @@ main = do
 --  putStrLn $ "pFactorsOf 1:" ++ (show (pFactorsOf 1))
 --  putStrLn $ "pFactorsOf 2:" ++ (show (pFactorsOf 2))
 --  putStrLn $ "pFactorsOf 3:" ++ (show (pFactorsOf 3))
-  putStrLn $ "pFactorsOf 4:" ++ (show (pFactorsOf 4))
-  putStrLn $ "pFactorsOf 5:" ++ (show (pFactorsOf 5))
-  putStrLn $ "pFactorsOf 6:" ++ (show (pFactorsOf 6))
-  putStrLn $ "pFactorsOf 7:" ++ (show (pFactorsOf 7))
-  putStrLn $ "pFactorsOf 8:" ++ (show (pFactorsOf 8))
-  putStrLn $ "pFactorsOf 9:" ++ (show (pFactorsOf 9))
-  putStrLn $ "pFactorsOf10:" ++ (show (pFactorsOf 10))
-  putStrLn $ "pFactorsOf12:" ++ (show (pFactorsOf 12))
+  putStrLn $ "pFactorsOf 4:" ++ show (pFactorsOf 4)
+  putStrLn $ "pFactorsOf 5:" ++ show (pFactorsOf 5)
+  putStrLn $ "pFactorsOf 6:" ++ show (pFactorsOf 6)
+  putStrLn $ "pFactorsOf 7:" ++ show (pFactorsOf 7)
+  putStrLn $ "pFactorsOf 8:" ++ show (pFactorsOf 8)
+  putStrLn $ "pFactorsOf 9:" ++ show (pFactorsOf 9)
+  putStrLn $ "pFactorsOf10:" ++ show (pFactorsOf 10)
+  putStrLn $ "pFactorsOf12:" ++ show (pFactorsOf 12)
   
   quickCheck prop_factors2
-  putStrLn $ "pFactorsOf 13195:" ++ (show (pFactorsOf 13195))
-  putStrLn (" :: Prime factors of 600851475143: " ++ (show (pFactorsOf 600851475143)))
+  putStrLn $ "pFactorsOf 13195:" ++ show (pFactorsOf 13195)
+  putStrLn (" :: Prime factors of 600851475143: " ++ show (pFactorsOf 600851475143))
 
 
 pFactorsOf :: Integer -> [Integer]
 pFactorsOf n | n <= 3 = [n]
-             | divisor /= 0 = divisor:(pFactorsOf (n `div` divisor))
+             | divisor /= 0 = divisor:pFactorsOf (n `div` divisor)
              | otherwise = [n]
   where divisor = primeMax n
 
 
 prime :: Integer -> Bool
-prime n | length (divisors n) == 0 = True
+prime n | length divisors n == 0 = True
         | otherwise = False
 
 divisors :: Integer -> [Integer]
@@ -53,8 +53,8 @@ primeDivisors x = [z | z <- [(x-1),(x-2)..2], x `mod` z == 0 && prime z] --not t
 
 
 primeMax :: Integer -> Integer -- returns highest divisor or 0
-primeMax n | length (divs) == 0 = 0
-           | otherwise = head (divs)
+primeMax n | length divs == 0 = 0
+           | otherwise = head divs
   where divs = primeDivisors n
 
 prop_factors2 :: Integer -> Property
